@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
-    ArrayList<SampleData> sample;
+    ArrayList<MovieData> sample;
 
-    public MyAdapter(Context context, ArrayList<SampleData> data) {
+    public MyAdapter(Context context, ArrayList<MovieData> data) {
         mContext = context;
         sample = data;
         mLayoutInflater = LayoutInflater.from(mContext);
@@ -34,12 +34,15 @@ public class MyAdapter extends BaseAdapter {
 
 
     @Override
-    public SampleData getItem(int position) {
+    public MovieData getItem(int position) {
         return sample.get(position);
     }
 
     @Override
     public View getView(int position, View converView, ViewGroup parent) {
+        String content =sample.get(position).stars +" "+sample.get(position).category
+                                                   +" "+sample.get(position).old
+                                                   +" "+sample.get(position).showTimes ;
         View view = mLayoutInflater.inflate(R.layout.listview_custom, null);
 
         ImageView imageView = (ImageView)view.findViewById(R.id.poster);
@@ -47,8 +50,8 @@ public class MyAdapter extends BaseAdapter {
         TextView grade = (TextView)view.findViewById(R.id.grade);
 
         imageView.setImageResource(sample.get(position).getPoster());
-        movieName.setText(sample.get(position).getMovieName());
-        grade.setText(sample.get(position).getGrade());
+        movieName.setText(sample.get(position).getTittle());
+        grade.setText(content);
 
         return view;
     }

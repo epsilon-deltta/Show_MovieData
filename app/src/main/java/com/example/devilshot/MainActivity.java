@@ -12,7 +12,7 @@ import java.util.ArrayList;
 //test+in github
 public class MainActivity extends AppCompatActivity {
     ListView listView;
-    ArrayList<SampleData> movieDataList;
+    ArrayList<MovieData> movieDataList= new ArrayList<MovieData>();
     MyAdapter myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +30,11 @@ public class MainActivity extends AppCompatActivity {
     AdapterView.OnItemClickListener itemClickListener =new AdapterView.OnItemClickListener(){
         @Override
         public void onItemClick(AdapterView parent, View v, int position, long id){
-            Toast.makeText(getApplicationContext(), myAdapter.getItem(position).getMovieName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), myAdapter.getItem(position).getTittle(), Toast.LENGTH_LONG).show();
         }
     };
     public void InitializeMovieData()
     {
-        movieDataList = new ArrayList<SampleData>();
-
-        movieDataList.add(new SampleData(R.drawable.image00, "미션임파서블","15세 이상관람가"));
-        movieDataList.add(new SampleData(R.drawable.image01, "아저씨","19세 이상관람가"));
-        movieDataList.add(new SampleData(R.drawable.image02, "어벤져스","12세 이상관람가"));
+        new Scracher(movieDataList);
     }
 }
