@@ -49,7 +49,8 @@ public class MyAdapter extends BaseAdapter {
         TextView movieName = (TextView)view.findViewById(R.id.movieName);
         TextView grade = (TextView)view.findViewById(R.id.grade);
 
-        imageView.setImageResource(sample.get(position).getPoster());
+        GlideApp.with(mContext).load(sample.get(position).imgUrl).into(imageView);
+//        imageView.setImageResource(sample.get(position).);
         movieName.setText(sample.get(position).getTittle());
         grade.setText(content);
 
